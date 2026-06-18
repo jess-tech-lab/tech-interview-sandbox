@@ -1,0 +1,8 @@
+[
+  {"time": "2026-06-18T08:00:00Z", "status": "driving"},
+  {"t": "1771241400", "state": "OFF"},
+  {"t": "2026-06-18 12:05:00", "state": "D"},
+  {"time": "CORRUPTED_PACKET_TEST", "status": "ON"},
+  {"time": "2026-06-18 13:35:00", "status": "DRIVING"},
+  {"time": "2026-06-18 15:00:00", "status": "OFF_DUTY"}
+]
