@@ -28,11 +28,11 @@ python solutions.py
   - Index 3 ("CORRUPTED_PACKET_TEST") fails both ISO and strptime parsing → dropped ✓
 
 2. Sort order after parsing:
-  1) Index 1 — Unix ts 1771241400 → some date in early 2026 (before June), OFF_DUTY
-  2) Index 0 — 2026-06-18 08:00:00, DRIVING
-  3) Index 2 — 2026-06-18 12:05:00, DRIVING ("D" → normalized)
-  4) Index 4 — 2026-06-18 13:35:00, DRIVING
-  5) Index 5 — 2026-06-18 15:00:00, OFF_DUTY
+  - Index 1 - Unix ts 1771241400 → some date in early 2026 (before June), OFF_DUTY
+  - Index 0 - 2026-06-18 08:00:00, DRIVING
+  - Index 2 - 2026-06-18 12:05:00, DRIVING ("D" → normalized)
+  - Index 4 - 2026-06-18 13:35:00, DRIVING
+  - Index 5 - 2026-06-18 15:00:00, OFF_DUTY
 
 3. Interval accumulation:
 
