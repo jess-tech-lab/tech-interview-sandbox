@@ -36,17 +36,12 @@ python solutions.py
 
 3. Interval accumulation:
 
-  ┌─────────────────┬──────────┬─────────┬───────────────────────────────────────┐
-  │    Interval     │  Status  │ Minutes │          Cumulative Driving           │
-  ├─────────────────┼──────────┼─────────┼───────────────────────────────────────┤
-  │ Index1 → Index0 │ OFF_DUTY │ months  │ resets continuous to 0                │
-  ├─────────────────┼──────────┼─────────┼───────────────────────────────────────┤
-  │ 08:00 → 12:05   │ DRIVING  │ 245     │ 245 min                               │
-  ├─────────────────┼──────────┼─────────┼───────────────────────────────────────┤
-  │ 12:05 → 13:35   │ DRIVING  │ 90      │ 335 min → violation logged at 13:35 ✓ │
-  ├─────────────────┼──────────┼─────────┼───────────────────────────────────────┤
-  │ 13:35 → 15:00   │ DRIVING  │ 85      │ 420 min → violation logged at 15:00 ✓ │
-  └─────────────────┴──────────┴─────────┴───────────────────────────────────────┘
+  | Interval | Status | Minutes | Cumulative Driving |
+  |---|---|---|---|
+  | Index1 → Index0 | OFF_DUTY | months | resets continuous to 0 |
+  | 08:00 → 12:05 | DRIVING | 245 | 245 min |
+  | 12:05 → 13:35 | DRIVING | 90 | 335 min → violation logged at 13:35 ✓ |
+  | 13:35 → 15:00 | DRIVING | 85 | 420 min → violation logged at 15:00 ✓ |
 
   Total driving: 245 + 90 + 85 = 420 min ✓
 
