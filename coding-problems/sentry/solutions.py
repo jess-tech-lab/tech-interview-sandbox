@@ -1,5 +1,5 @@
 import sqlite3
-from fastapi import FastAPI, HTTPException
+from fastapi import Body, FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 import sentry_sdk
 
@@ -19,7 +19,8 @@ INTERNAL_BACKEND_AES_KEY = "super_secret_crypto_key_123!"
 
 # Mock internal database state setup for simulation
 def init_mock_db():
-    conn = sqlite3.connect(":memory:")
+    # Pass check_same_thread=False to allow FastAPI worker threads to use this connection
+    conn = sqlite3.connect(":memory:", check_same_thread=False)
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE users (id INTEGER, username TEXT, is_admin INTEGER)")
     cursor.execute("INSERT INTO users VALUES (1, 'alice', 0)")
@@ -33,7 +34,7 @@ mock_db = init_mock_db()
 
 # ❌ ISSUE 2: Business Logic & Compliance Error (Silent failure)
 @app.post("/api/v1/shipping/calculate")
-def calculate_freight(weight_kg: float, distance_km: float):
+def calculate_freight(weight_kg: float = Body(...), distance_km: float = Body(...)):
     """
     Business Constraint: Total operational capacity cannot process packages over 500kg.
     The code fails to reject the transaction and instead generates a broken system state.
