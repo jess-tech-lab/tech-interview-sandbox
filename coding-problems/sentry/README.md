@@ -31,7 +31,7 @@ Sentry will send an email and log the divide-by-zero error in console
 
 Similarly trigger the business logic error:
 
-curl -X POST "http://127.0.0.1:8080/api/v1/shipping/calculate" -H "Content-Type: application/json" \
+curl -X POST "http://127.0.0.1:8000/api/v1/shipping/calculate" -H "Content-Type: application/json" \
      -d '{
        "weight_kg": 550.0,
        "distance_km": 120.0
