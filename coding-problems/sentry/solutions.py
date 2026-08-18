@@ -108,15 +108,9 @@ def sync_third_party_provider(provider_api_key: str, system_env: str = "producti
     return {"synchronization": "active", "scope": system_env}
 
 
-# ❌ ISSUE 5: Unhandled Critical Framework Crash (Zero Error Catching)
 @app.get("/api/v1/analytics/ratio")
 def calculation_engine(active_drivers: int, standby_drivers: int):
-    """
-        Zero boundary verification checking for division by zero.
-        If 'standby_drivers' equals 0, the Python app crashes out immediately.
-    ```python
-    """
-    # Passing standby_drivers=0 will raise a ZeroDivisionError.
-    # Because there is no try/except block, Sentry catches this automatically at the FastAPI level.
+    if standby_drivers == 0:
+        raise HTTPException(status_code=422, detail="standby_drivers must be non-zero")
     efficiency_ratio = active_drivers / standby_drivers
     return {"calculated_ratio": efficiency_ratio}
