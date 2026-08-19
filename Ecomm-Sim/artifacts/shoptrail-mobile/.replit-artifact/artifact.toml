@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/"
+title = "Shoptrail"
+description = "A polished Android shopping app prototype with sign-in, product discovery, product details, cart, checkout, order confirmation, and order history for a modern everyday essentials storefront."
+version = "1.0.0"
+id = "artifacts/shoptrail-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/" ]
+localPort = 19685
+
+[services.development]
+run = "pnpm --filter @workspace/shoptrail-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/shoptrail-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/shoptrail-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "19685"
+BASE_PATH = "/"
